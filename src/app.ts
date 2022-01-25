@@ -1,14 +1,11 @@
 import express from 'express';
-import {createConnection, Connection,  ConnectionOptions} from 'typeorm';
-
+import router from './routes/index';
 const App = express();
+App.use(express.json());
 
-
-
-App.get('/users',async (req,res) =>{});
-
-App.get('/',(req,res) =>{
-    res.json({message: 'Hello!'});
+App.use(router);
+App.get('/', (req, res) => {
+  res.json({ message: 'Hello!' });
 });
 
 export = App;
