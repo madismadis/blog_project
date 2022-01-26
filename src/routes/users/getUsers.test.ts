@@ -4,7 +4,7 @@ const endpoint = 'http://localhost:3000/users/';
 
 describe('users', () => {
   beforeAll(() => {
-    // käivitatakse enne testi paki algust (nt. tee test andmebaasi ja täida see)
+    // käivitatbeforeAll(() => {akse enne testi paki algust (nt. tee test andmebaasi ja täida see)
   });
   // käivita testid
   it('Should return user by ID', async () => {

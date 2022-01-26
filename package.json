@@ -10,19 +10,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mahoraz/blog_project.git"
+    "url": "git+https://github.com/madismadis/blog_project.git"
   },
   "keywords": [
     "typescript",
     "nodejs",
     "typeorm"
   ],
-  "author": "AJ",
+  "author": "madis",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/mahoraz/blog_project/issues"
+    "url": "git+https://github.com/madismadis/blog_project.git"
   },
-  "homepage": "https://github.com/mahoraz/blog_project#readme",
+  "homepage": "git+https://github.com/madismadis/blog_project.git",
   "dependencies": {
     "@babel/core": "^7.0.0-0",
     "@babel/preset-env": "^7.16.11",
