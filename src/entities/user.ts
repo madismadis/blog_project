@@ -4,25 +4,25 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  getConnection,
   BaseEntity
 } from 'typeorm';
+import { userInfo } from 'os';
 // Dekoraator käsk, mis ütleb Typeormile, et tegemist on entity ehk
 // andmebaasi objekti kirjeldusega
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
   @Column('varchar', { length: 150 })
   firstName: string;
   @Column('varchar', { length: 150, nullable: true })
   middleName?: string;
   @Column('varchar', { length: 150 })
-  lastName: string;
+  lastName!: string;
   @Column('varchar')
-  mobile: string;
+  mobile!: string;
   @Column('varchar', { length: 320, unique: true })
-  email: string;
+  email!: string;
   @Column({ default: () => 'CURRENT_TIMESTAMP' })
   lastLogin: Date;
   @Column('tinytext', { nullable: true })

@@ -1,11 +1,7 @@
-import { randomUUID } from 'crypto';
 import express, { Request, Response } from 'express';
-import { getConnection } from 'typeorm';
 import User from '../../entities/user';
-import  { v4 as uuidV4} from 'uuid';
+import { v4 as uuidV4 } from 'uuid';
 const router = express.Router();
-
-
 
 interface UserInput {
   firstName: string;
@@ -22,10 +18,10 @@ router.post('/', async (req: Request, res: Response) => {
       middleName,
       lastName,
       mobile,
-      email}
-      = req.body as UserInput;
-      
-      // TODO: validation for inputs
+      email
+    } = req.body as UserInput;
+
+    // TODO: validation for inputs
 
     const user = new User();
     user.id = uuidV4();

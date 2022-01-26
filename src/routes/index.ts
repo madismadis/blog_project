@@ -6,11 +6,12 @@ import getUsers from './user/getUsers';
 const router = express.Router();
 var userRoutes: string[] = [];
 
-fs.readdirSync(__dirname + '/user').forEach(function (file) {
-  router.use('/users')
-  userRoutes.push(file.substring(0, file.indexOf('.')));
-});
-console.log(userRoutes.toString());
+// fs.readdirSync(__dirname + '/user').forEach(function (file) {
+//   router.use('/users', async () => {
+//     return await import(__dirname.concat('\\user\\').concat(file));
+//   });
+// });
+// console.log(userRoutes.toString());
 
 router.use('/users', [createUser, getUser, getUsers]);
 
