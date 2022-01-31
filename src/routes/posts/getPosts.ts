@@ -18,14 +18,12 @@ router.get('/', async (req: Request, res: Response) => {
     const postsQuery = Post.createQueryBuilder('post')
       .innerJoinAndSelect('post.author', 'author')
       .limit(Number.isSafeInteger(take) ? Number.parseInt(take as string) : 20)
-      .offset(Number.isSafeInteger(skip) ? Number.parseInt(skip as string) : 0)
+      .offset(Number.isSafeInteger(skip) ? Number.parseInt(skip as string) : 0);
 
-      if(userId !=undefined){
-      postsQuery.where('author.id=:userId',{userId: userId});
-
-      }
-
-      const posts= await postsQuery.getMany();
+    if (userId != undefined) {
+      postsQuery.where('author.id = :userId', { userId: userId });
+    }
+    const posts = await postsQuery.getMany();
 
     return res.json({ posts: posts });
   } catch (error) {
@@ -42,6 +40,5 @@ router.get('/', async (req: Request, res: Response) => {
     });
   }
 });
-
 
 export default router;
