@@ -15,7 +15,7 @@ router.get('/:id', async (req: Request, res: Response) => {
       });
     }
 
-    return res.json(user);
+    return res.json(user.userInfo());
   } catch (error) {
     if (error instanceof Error) {
       return res.json({

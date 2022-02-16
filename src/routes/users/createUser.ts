@@ -1,6 +1,12 @@
 import express, { Request, Response } from 'express';
 import User from '../../entities/User';
 import { v4 as uuidV4 } from 'uuid';
+import bunyan from 'bunyan';
+const log = bunyan.createLogger({
+  name: __filename,
+  stream: process.stdout
+});
+
 const router = express.Router();
 
 interface UserInput {
@@ -35,11 +41,14 @@ router.post('/', async (req: Request, res: Response) => {
     if (!newUser) {
       throw new Error();
     }
+    log.info({ user: newUser }, 'New user was created');
 
     return res.json(newUser);
   } catch (error) {
+    log.error( { error: error, input: req.body }, 'Unable to create User');
+
     if (error instanceof Error) {
-      console.log({ error: error.message });
+
       return res.json({
         error: 'Unable to create new user',
         message: error.message

@@ -6,8 +6,12 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  Entity
+  Entity,
+  ManyToMany,
+  JoinTable,
+  OneToMany
 } from 'typeorm';
+import Category from './Category';
 import User from './User';
 
 @Entity()
@@ -15,32 +19,36 @@ export default class Post extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
   @Column('varchar', { length: 75 })
-  title: string;
+  title!: string;
   @Column()
   authorId!: string;
-  @Column()
-  parentId!: string;
+  @Column('uuid', {nullable: true})
+  parentId?: string;
   @Column('varchar', { length: 100 })
   metaTitle?: string;
   @Column('tinytext')
-  summary: string;
+  summary!: string;
   @Column('boolean', { default: false })
-  published: boolean;
+  published!: boolean;
   @Column('text')
-  content: string;
+  content!: string;
   @CreateDateColumn()
-  createdAt: Date;
+  createdAt!: Date;
   @UpdateDateColumn()
-  updatedAt: Date;
+  updatedAt!: Date;
 
   @ManyToOne(() => User, (user) => user.posts, {
     createForeignKeyConstraints: true
   })
-  author: Promise<User>;
+  author!: Promise<User>;
 
   // Parent post
-  @ManyToOne(() => Post, (post) => post.parentId, {
+  @OneToMany(() => Post, (post) => post.parentId, {
     createForeignKeyConstraints: true
   })
-  parentPost: Promise<User>;
+  parentPost?: Promise<User>;
+
+  @ManyToMany(()=> Category)
+  @JoinTable()
+  categories!: Category[];
 }

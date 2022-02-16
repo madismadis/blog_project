@@ -1,8 +1,8 @@
 const config = require("./src/config/config.json");
 
-module.exports = {
+const tsConfig = {
   type: "mysql",
-  entities: [__dirname + "/src/entities/*.ts"],
+  entities: [__dirname + "/../entities/*{.ts,.js}"],
   host: config.host,
   port: config.port,
   database: "blog",
@@ -10,3 +10,4 @@ module.exports = {
   password: config.password,
   synchronize: true
 }
+module.exports = tsConfig;
