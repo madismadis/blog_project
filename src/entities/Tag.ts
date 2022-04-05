@@ -8,15 +8,12 @@ import {
     ManyToMany
   } from 'typeorm';
   import Post from './Post';
-  import User from './User';
+  
 
   @Entity()
-  export default class Category extends BaseEntity {
+  export default class Tag extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id!: string;
-
-    @Column('uuid', {nullable: true})
-    parentId?: string;
 
     @Column('varchar', { length: 75 })
     title!: string;

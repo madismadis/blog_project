@@ -5,13 +5,13 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     Entity,
-    ManyToMany
-  } from 'typeorm';
+    ManyToOne,
+    } from 'typeorm';
   import Post from './Post';
-  import User from './User';
+
 
   @Entity()
-  export default class Category extends BaseEntity {
+  export default class Comment extends BaseEntity {
     @PrimaryGeneratedColumn('uuid')
     id!: string;
 
@@ -21,18 +21,18 @@ import {
     @Column('varchar', { length: 75 })
     title!: string;
 
-    @Column('varchar', { length: 100 })
-    metaTitle?: string;
-
     @Column('text')
     content?: string;
 
     @CreateDateColumn()
     createdAt: Date;
 
-    @UpdateDateColumn()
-    updatedAt: Date;    
+    @Column('boolean', { default: false })
+    published!: boolean;
 
-    @ManyToMany(() => Post)
-    posts: Post;
+    @UpdateDateColumn()
+    updatedAt: Date;
+
+    @ManyToOne(() => Post, post =>post.comments)
+    post: Post[];
   }
