@@ -8,7 +8,7 @@ import {
     ManyToMany
   } from 'typeorm';
   import Post from './Post';
-  import User from './User';
+  
 
   @Entity()
   export default class Category extends BaseEntity {
