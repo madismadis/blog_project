@@ -36,6 +36,7 @@ router.post('/', async (req: Request, res: Response) => {
       published: false
     });
     console.log(post);
+    
     const newPost = await post.save();
     if (!newPost) {
       // TODO: parem logger vahevara kasutusele võtta

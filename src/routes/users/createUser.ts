@@ -38,6 +38,7 @@ router.post('/', async (req: Request, res: Response) => {
     user.email = email;
 
     let newUser = await user.save();
+    
     if (!newUser) {
       throw new Error();
     }
