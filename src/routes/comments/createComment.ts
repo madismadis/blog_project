@@ -18,7 +18,7 @@ router.post('/', async (req: Request, res: Response) => {
     }
     // TODO: valideeri sijsonid (nt. sanitize ja validate)
 
-
+    
     const comment = Comment.create ({
         id: uuidV4(),
         title: title,

@@ -18,6 +18,9 @@ import {
     @Column('uuid', {nullable: true})
     parentId?: string;
 
+    @Column('uuid', {nullable: true})
+    postId?: string;
+
     @Column('varchar', { length: 75 })
     title!: string;
 
