@@ -19,6 +19,7 @@ router.get('/', async (req: Request, res: Response) => {
     }
 
     return res.json({ users: users.map((user) => user.userInfo()) });
+    
   } catch (error) {
     if (error instanceof Error) {
       return res.json({
