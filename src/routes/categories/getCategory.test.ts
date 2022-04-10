@@ -10,7 +10,7 @@ describe('get category by ID',()=> {
     it("should return category by ID", async ()=>{
     
         const response = await axios.get(
-        endpoint + '/0a65c6f7-90a7-4ae3-bf94-5a8465a47104' //siia kategooria id
+        endpoint + '/0a65c6f7-90a7-4ae3-bf94-5a8465a47104' //siin kategooria id
         
         );
         expect(response?.data).toHaveProperty('id');

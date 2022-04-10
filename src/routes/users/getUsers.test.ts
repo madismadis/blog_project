@@ -9,7 +9,7 @@ describe('users', () => {
   // käivita testid
   it('Should return user by ID', async () => {
     const response = await axios.get(
-      endpoint + '/089ddda5-f4c8-4bca-974a-e69d616e504a'
+      endpoint + '/089ddda5-f4c8-4bca-974a-e69d616e504a' //user id
     );
     const data = response.data;
     expect(data).toHaveProperty('id');
